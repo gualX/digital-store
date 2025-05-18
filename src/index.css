@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@media (max-width: 768px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
