@@ -5,6 +5,8 @@ import ProductListing, { allProducts } from '../components/ProductListing';
 import BuyBox from '../components/BuyBox';
 import ProductOptions from '../components/ProductOptions';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 function ProductViewPage() {
   const product = {
     name: 'Tênis Nike Jordan - Masculino',
@@ -14,9 +16,9 @@ function ProductViewPage() {
     price: 300,
     priceDiscount: 150,
     images: [
-      { src: '/product-thumb-1.jpeg' },
-      { src: '/product-thumb-2.jpeg' },
-      { src: '/product-thumb-3.jpeg' },
+      { src: `${baseUrl}product-thumb-1.jpeg` },
+      { src: `${baseUrl}product-thumb-2.jpeg` },
+      { src: `${baseUrl}product-thumb-3.jpeg` },
     ],
     description:
       'Tênis de alta performance e estilo icônico. Perfeito para uso esportivo ou casual. Design durável com excelente suporte.',

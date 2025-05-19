@@ -4,13 +4,15 @@ import Gallery from "../components/Gallery";
 import Section from "../components/Section";
 import ProductListing, { allProducts } from "../components/ProductListing";
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const images = [
-  { src: "/home-slide-7.jpeg" },
-  { src: "/home-slide-6.jpeg" },
-  { src: "/home-slide-2.jpeg" },
-  { src: "/home-slide-4.jpeg" },
-  { src: "/home-slide-8.jpeg" },
-  { src: "/home-slide-5.jpeg" },
+  { src: `${baseUrl}home-slide-7.jpeg` },
+  { src: `${baseUrl}home-slide-6.jpeg` },
+  { src: `${baseUrl}home-slide-2.jpeg` },
+  { src: `${baseUrl}home-slide-4.jpeg` },
+  { src: `${baseUrl}home-slide-8.jpeg` },
+  { src: `${baseUrl}home-slide-5.jpeg` },
 ];
 
 // Filtra os produtos em alta (highDemand === true)
@@ -35,7 +37,7 @@ function HomePage() {
                   30% OFF
                 </span>
                 <img
-                  src={`/collection-${num}.png`}
+                  src={`${baseUrl}collection-${num}.png`}
                   alt={`Coleção ${num}`}
                   className="w-full h-auto object-cover rounded-[4px]"
                 />
