@@ -7,7 +7,7 @@ import ProductViewPage from "./pages/ProductViewPage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/digital-store">
       <Routes>
         <Route path="/" element={<Layout><HomePage /></Layout>} />
         <Route path="/produtos" element={<Layout><ProductListingPage /></Layout>} />
