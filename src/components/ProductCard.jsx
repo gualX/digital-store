@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function ProductCard({ id, name, model, image, price, priceDiscount }) {
   return (
-    <Link to={`/produto/${id}`} className="w-[292px] block">
+    <Link to={`/produto/${id}`} className="w-full max-w-[292px] mx-auto block">
       {/* Imagem com rótulo sobreposto */}
       <div className="relative mb-4">
         {priceDiscount && (

@@ -1,5 +1,6 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Logo from '../components/Logo';
 import { FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import miniCart from '../assets/mini-cart.svg';
@@ -56,7 +57,7 @@ function Header() {
           </div>
 
           {/* Campo de busca (desktop) */}
-          <div className="hidden md:flex items-center bg-[#F5F5F5] rounded-lg px-5 py-4 w-full max-w-xl ml-4 ">
+          <div className="hidden md:flex items-center bg-[#F5F5F5] rounded-lg px-5 py-4 w-full max-w-xl ml-4">
             <input
               type="text"
               placeholder="Pesquisar produto..."
@@ -89,8 +90,8 @@ function Header() {
 
             {/* Lupa (mobile) */}
             <button
-                className={`${showMobileSearch ? 'text-pink-600' : 'text-gray-400'} md:hidden`}
-                onClick={() => setShowMobileSearch(!showMobileSearch)}
+              className={`${showMobileSearch ? 'text-pink-600' : 'text-gray-400'} md:hidden`}
+              onClick={() => setShowMobileSearch(!showMobileSearch)}
             >
               <FaSearch size={20} />
             </button>
@@ -147,26 +148,77 @@ function Header() {
             </NavLink>
           ))}
         </nav>
-
-        {/* Menu de navegação (mobile) */}
-        {isMobileMenuOpen && (
-          <nav className="flex flex-col gap-4 mt-4 md:hidden">
-            {items.map((item, index) => (
-              <NavLink
-                key={index}
-                to={item.to}
-                className="text-gray-700 hover:text-pink-600"
-                onClick={() => {
-                  setActiveIndex(index);
-                  setIsMobileMenuOpen(false);
-                }}
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
-        )}
       </div>
+
+      {/* Menu suspenso lateral (mobile) com overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black z-40"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            {/* Sidebar */}
+            <motion.div
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-y-0 left-0 z-50 w-3/4 max-w-xs bg-white shadow-md p-6 md:hidden flex flex-col"
+            >
+              {/* Botão fechar */}
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="self-end mb-4 text-gray-700"
+              >
+                <FaTimes size={20} />
+              </button>
+
+              {/* Título Páginas */}
+              <h2 className="text-lg font-bold mb-4">Páginas</h2>
+
+              {/* Navegação */}
+              <nav className="flex flex-col gap-4 mb-6">
+                {items.map((item, index) => (
+                  <NavLink
+                    key={index}
+                    to={item.to}
+                    className="text-gray-700 text-[16px] hover:text-pink-600"
+                    onClick={() => {
+                      setActiveIndex(index);
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
+              </nav>
+
+              {/* Entrar / Cadastre-se */}
+              <div className="flex flex-col gap-3 mt-auto">
+                <a
+                  href="/login"
+                  className="w-full text-center bg-[#C92071] hover:bg-[#991956] transition-colors duration-200 rounded-lg text-white font-bold text-[14px] py-2"
+                >
+                  Entrar
+                </a>
+                <a
+                  href="/signup"
+                  className="text-center text-[15px] text-gray-800 underline hover:text-[#991956]"
+                >
+                  Cadastre-se
+                </a>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

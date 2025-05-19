@@ -11,8 +11,6 @@ function ProductViewPage() {
   const product = allProducts.find((p) => p.id === Number(id));
   const recommendedProducts = allProducts.filter((p) => p.id !== Number(id)).slice(0, 4);
 
-  // Removido "Produto não encontrado" conforme solicitado
-
   const images = [
     { src: product.image },
     { src: product.image },
@@ -22,9 +20,9 @@ function ProductViewPage() {
   return (
     <>
       {/* Seção principal com galeria e infos do produto */}
-      <div className="bg-[#F5F5F5] flex flex-col md:flex-row gap-8 p-4 md:p-15">
+      <div className="bg-[#F5F5F5] flex flex-col md:flex-row gap-9 p-4 md:p-15">
         {/* Galeria */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 pl-8">
           <Gallery images={images} radius="6px" />
         </div>
 
@@ -78,9 +76,13 @@ function ProductViewPage() {
       </div>
 
       {/* Produtos recomendados */}
-      <div className="bg-[#F5F5F5] px-4 md:px-1 pb-12">
+      <div className="bg-[#F5F5F5] px-4 md:px-10 pb-10 py-5">
         <Section title="Produtos recomendados" titleAlign="left" />
-        <ProductListing products={recommendedProducts} />
+        <ProductListing
+          products={recommendedProducts}
+          columns={4}
+          className="mx-auto max-w-[1200px]"
+        />
       </div>
     </>
   );

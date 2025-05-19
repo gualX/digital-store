@@ -137,9 +137,17 @@ export const allProducts = [
 
 ];
 
-function ProductListing({ products }) {
+function ProductListing({ products, columns = 4, gapY = "gap-y-10", className = "" }) {
+  const gridColsDesktop = {
+    2: "md:grid-cols-2",
+    3: "md:grid-cols-3",
+    4: "md:grid-cols-4",
+  };
+
   return (
-    <div className="bg-[#F5F5F5] flex flex-wrap justify-center gap-4 mt-6 gap-y-10 gap-x-4">
+    <div
+      className={`grid grid-cols-2 ${gridColsDesktop[columns]} gap-x-4 ${gapY} mt-6 px-4 ${className}`}
+    >
       {products.map((product) => (
         <ProductCard
           key={product.id}
@@ -166,6 +174,7 @@ ProductListing.propTypes = {
       priceDiscount: PropTypes.number,
     })
   ).isRequired,
+  columns: PropTypes.oneOf([2, 3, 4]),
 };
 
 export default ProductListing;

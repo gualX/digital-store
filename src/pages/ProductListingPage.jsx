@@ -138,7 +138,7 @@ const ProductListingPage = () => {
           {/* Coluna de produtos */}
           <div className="flex-1">
             <Section>
-              <ProductListing products={filteredProducts} />
+              <ProductListing products={filteredProducts} columns={3} />
             </Section>
           </div>
         </div>
