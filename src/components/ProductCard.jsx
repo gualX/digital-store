@@ -1,13 +1,14 @@
 // src/components/ProductCard.jsx
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-function ProductCard({ name, model, image, price, priceDiscount }) {
+function ProductCard({ id, name, model, image, price, priceDiscount }) {
   return (
-    <div className="w-[292px]">
+    <Link to={`/produto/${id}`} className="w-[292px] block">
       {/* Imagem com rótulo sobreposto */}
       <div className="relative mb-4">
         {priceDiscount && (
-          <span className="absolute top-5 left-5 inline-block bg-[#f0ff8c] text-blue-900 font-semibold rounded-xl px-3 py-2 text-sm">
+          <span className="absolute top-5 left-5 inline-block bg-[#e5f57c] text-blue-900 font-semibold rounded-xl px-3 py-2 text-sm">
             50% OFF
           </span>
         )}
@@ -37,11 +38,12 @@ function ProductCard({ name, model, image, price, priceDiscount }) {
           R$ {price.toFixed(2).replace(".", ",")}
         </span>
       )}
-    </div>
+    </Link>
   );
 }
 
 ProductCard.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   model: PropTypes.string,
   image: PropTypes.string.isRequired,

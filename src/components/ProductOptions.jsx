@@ -16,30 +16,27 @@ function ProductOptions({ options, radius, shape, type, onChange }) {
       {options.map((option, index) => {
         const isSelected = index === selectedIndex;
 
-        // Estilo base do container
         const baseClasses =
           shape === "square"
-            ? `w-12 h-[46px] flex items-center justify-center border rounded-[${radius}] cursor-pointer`
+            ? `w-12 h-[46px] flex items-center justify-center border cursor-pointer`
             : "w-[31px] h-[31px] rounded-full border cursor-pointer";
 
         const selectedStyle =
           type === "text"
             ? isSelected
-              ? "bg-[#C92071] text-white border-primary-600 border-2"
-              : "text-[#474747] border-gray-300 bg-white"
+              ? "bg-[#C92071] text-white border-[#C92071] border-2"
+              : "text-[#474747] border-gray-300 bg-white border"
             : isSelected
-            ? "border-primary-600 border-2"
-            : "border-gray-300";
+            ? "border-[#C92071] border-4"
+            : "border-gray-300 border";
 
         const style = {};
 
-        // se for tipo color, define o background color
         if (type === "color") {
           style.backgroundColor = option;
           style.borderRadius = shape === "circle" ? "50%" : radius;
         }
 
-        // se for tipo texto, pode aplicar radius também
         if (shape === "square") {
           style.borderRadius = radius;
         }

@@ -137,14 +137,13 @@ export const allProducts = [
 
 ];
 
-export const featuredProducts = allProducts.slice(0, 3); // ou aplique uma lógica para os "em alta"
-
 function ProductListing({ products }) {
   return (
     <div className="bg-[#F5F5F5] flex flex-wrap justify-center gap-4 mt-6 gap-y-10 gap-x-4">
-      {products.map((product, index) => (
+      {products.map((product) => (
         <ProductCard
-          key={index}
+          key={product.id}
+          id={product.id}
           name={product.name}
           model={product.model}
           image={product.image}
@@ -159,6 +158,7 @@ function ProductListing({ products }) {
 ProductListing.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       model: PropTypes.string,
       image: PropTypes.string.isRequired,

@@ -27,13 +27,13 @@ function HomePage() {
       {/* Coleções em destaque */}
       <div className="bg-[#F5F5F5] py-10">
         <Section title="Coleções em destaque" titleAlign="left">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 md:px-27 mt-7">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 md:px-15 mt-7">
             {[1, 2, 3].map((num) => (
               <div
                 key={num}
                 className="relative w-full h-auto rounded-[4px] overflow-hidden group"
               >
-                <span className="absolute top-3 left-7 inline-block bg-[#f0ff8c] text-blue-900 font-semibold rounded-xl px-3 py-2 text-sm shadow">
+                <span className="absolute top-3 left-7 inline-block bg-[#e5f57c] text-blue-900 font-semibold rounded-xl px-3 py-2 text-sm shadow">
                   30% OFF
                 </span>
                 <img

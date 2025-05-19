@@ -11,7 +11,7 @@ function Section({ title, titleAlign = "left", link, children }) {
       >
         <h2
           className={`text-[24px] text-[#474747] font-semibold w-full ${
-            titleAlign === "left" ? "pl-26 mb-1" : ""
+            titleAlign === "left" ? "pl-16 mb-1" : ""
           }`}
           style={{ textAlign: titleAlign }}
         >
